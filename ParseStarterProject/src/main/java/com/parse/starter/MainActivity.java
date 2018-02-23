@@ -26,6 +26,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.parse.SignUpCallback;
 
 import java.util.List;
 
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         });*/
 
       //update score who has score more than 100
-        ParseQuery<ParseObject> query=ParseQuery.getQuery("Score");
+   /*     ParseQuery<ParseObject> query=ParseQuery.getQuery("Score");
         query.whereGreaterThan("score",200);
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -132,10 +133,43 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+        });*/
+
+   //CREATE USER
+      /*  ParseUser user=new ParseUser();
+        user.setUsername("ashishkvs");
+        user.setPassword("009inspired");
+        user.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(ParseException e) {
+                if(e==null){
+                    Log.i("Sign up" ,"Successfull");
+                }else{
+                    Log.i("Sign up","Failed");
+                }
+            }
         });
+*/
 
+      ParseUser.logOut();
+      if(ParseUser.getCurrentUser()!=null){
+          Log.i("currentUser","User Logged in"+ParseUser.getCurrentUser().getUsername());
 
+      }else{
+          Log.i("currentUser","User not logged in");
+      }
+//LOGIN USER
+     /*   ParseUser.logInInBackground("ashishkvs", "abcd", new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                if(user != null){
+                    Log.i("Login","Successfull");
+                }else{
 
+                    Log.i("Login","Failed"+e.toString());
+                }
+            }
+        });*/
 
 
 
